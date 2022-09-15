@@ -10,8 +10,9 @@ const Login = () => {
 
   return (
     <div className={classes.root}>
+        {/* <div className={classes.background} /> */}
         <img src={NetflixLogo} className={classes.logo} />
-        <NetflixButton className={classes.session}>Iniciar sesión</NetflixButton>
+        <NetflixButton className={classes.session}>INICIAR SESIÓN</NetflixButton>
       <div className={classes.subroot}>
         <Typography variant='h2'>Películas y series ilimitadas y mucho más</Typography>
         <Typography variant='h5'>Disfruta donde quieras. Cancela cuando   quieras
@@ -19,10 +20,9 @@ const Login = () => {
         <Typography variant='h6'>¿Quieres ver Netflix ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Netflix
         </Typography>
         <div>
-
+          <NetflixInput placeholder='email'/>
           <NetflixButton>GET STARTED</NetflixButton>
         </div>
-      <div className={classes.background} />
       </div>
     </div>
   )
@@ -31,7 +31,7 @@ const Login = () => {
 const useStyles = makeStyles((theme)=>({
   root:{
     height:'100vh',
-    backgroundImage:`url(${NetflixFondo})`,
+    backgroundImage:`linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(${NetflixFondo})`,
     backgroundPosition:'center',
     backgroundRepeat:'no-repeat',
     backgroundSize:'cover',
@@ -39,14 +39,10 @@ const useStyles = makeStyles((theme)=>({
     position:'relative',
   },
   logo:{
-    width:'100px',
-    zIndex:"100"
-  },
-  logo:{
     position:"fixed",
     top:0,
-    left:0,
-    width:"150px",
+    left:40,
+    width:"200px",
     cursor:'pointer',
     zIndex:"100"
   },
@@ -54,7 +50,7 @@ const useStyles = makeStyles((theme)=>({
     position:"fixed",
     right:20,
     top:20,
-    zIndex:"100"
+    // zIndex:"100",
   },
   subroot:{
     color:'white',
@@ -65,15 +61,9 @@ const useStyles = makeStyles((theme)=>({
     alignItems:'center',
     "& h2,h5,h6":{
       zIndex:"100",
+      textAlign:'center'
     }
   },
-  background:{
-    position:'absolute',
-    height:'100vh',
-    width:'100%',
-    backgroundColor:'rgba(0,0,0,0.5)',
-    zIndex:"1"
-  }
 }))
 
 
