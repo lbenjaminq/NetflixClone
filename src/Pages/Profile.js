@@ -1,20 +1,76 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core'
+import React from "react";
+import { makeStyles, Typography } from "@material-ui/core";
+import Header from "../Components/Header";
+import NetflixAvatar from "../Images/Netflix-avatar.png";
+import Plans from "../Components/Plans";
+import { NetflixButton } from "../styled";
+import { auth } from "../firebase";
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
+  const classes = useStyles();
+  const history = useHistory()
 
-  const classes = useStyles()
+  const handleSignUp = () => {
+    auth.signOut();
+    history.push("/login")
+  }
 
   return (
-    <div className={classes.root}>
-      Profile
-    </div>
-  )
-}
+    <>
+      <Header />
+      <div className={classes.root}>
+        <Typography variant="h3">Edit profile</Typography>
+        <div className={classes.info}>
+          <img src={NetflixAvatar} alt="logo" />
+          <div className={classes.content}>
+            <Typography variant="h4">Plans</Typography>
+            <div className={classes.plans}>
+              <Plans cost={7.99}>Netflix Standard</Plans>
+              <Plans cost={11.99}>Netflix Basic</Plans>
+              <Plans cost={15.99}>Netflix Premium</Plans>
+              <NetflixButton wide="large" onClick={handleSignUp}>
+                Sign out
+              </NetflixButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-const useStyles = makeStyles((theme)=>({
-  root:{
-  }
-}))
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: "93vh",
+    maxWidth: "800px",
+    margin: "auto",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  info: {
+    display: "flex",
+    width: "80%",
+    "& img": {
+      width: "100px",
+      height: "100px",
+      [theme.breakpoints.down("xs")]: {
+        display: "none",
+      },
+    },
+  },
+  content: {
+    width: "100%",
+    margin: "0px 20px",
+    "& h4": {
+      borderBottom: "1px solid black",
+    },
+  },
+  plans: {
+    width: "100%",
+    margin: "10px 0px",
+  },
+}));
 
-export default Profile
+export default Profile;
