@@ -18,7 +18,7 @@ const Login = () => {
         </Typography>
         <Typography variant='h6'>¿Quieres ver Netflix ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Netflix
         </Typography>
-        <div className={c}>
+        <div>
 
           <NetflixButton>GET STARTED</NetflixButton>
         </div>
