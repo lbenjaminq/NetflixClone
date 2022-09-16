@@ -19,9 +19,10 @@ function App() {
     //El observable al que se suscribe representa el estado del usuario autenticado. El valor de user es un objeto User que contiene los datos del usuario que ha iniciado sesión o null si nadie está conectado. Este observer se ejecuta cada vez que alguien inicia o cierra sesión.
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
+      console.log('user',userAuth)
         dispatch(
           login({
-            uid: userAuth.id,
+            uid: userAuth.uid,
             email: userAuth.email,
           })
         );
