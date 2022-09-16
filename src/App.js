@@ -19,7 +19,7 @@ function App() {
     //El observable al que se suscribe representa el estado del usuario autenticado. El valor de user es un objeto User que contiene los datos del usuario que ha iniciado sesión o null si nadie está conectado. Este observer se ejecuta cada vez que alguien inicia o cierra sesión.
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-      console.log('user',userAuth)
+        console.log("user", userAuth);
         dispatch(
           login({
             uid: userAuth.uid,
@@ -38,7 +38,7 @@ function App() {
       <Router>
         <Switch>
           <Route path={"/login"}>
-            <Login /> 
+            <Login />
           </Route>
           <Route path={"/profile"}>
             <Profile />
@@ -57,7 +57,7 @@ function App() {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#fff",
+    backgroundColor: "#141414",
     minHeight: "100vh",
   },
 }));

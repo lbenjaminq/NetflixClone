@@ -28,4 +28,6 @@ export const NetflixButton = styled.button`
   color: white;
   padding: 10px;
   z-index: 30;
+  font-size: 1.1rem;
+  cursor:pointer
 `;

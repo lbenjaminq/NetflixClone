@@ -20,7 +20,7 @@ const Profile = () => {
     <>
       <Header />
       <div className={classes.root}>
-        <Typography variant="h3">Edit profile</Typography>
+        <Typography variant="h3" style={{marginTop:"20px"}}>Edit profile</Typography>
         <div className={classes.info}>
           <img src={NetflixAvatar} alt="logo" />
           <div className={classes.content}>
@@ -30,7 +30,7 @@ const Profile = () => {
               <Plans cost={11.99}>Netflix Basic</Plans>
               <Plans cost={15.99}>Netflix Premium</Plans>
               <NetflixButton wide="large" onClick={handleSignUp}>
-                Sign out
+                SIGN OUT
               </NetflixButton>
             </div>
           </div>
@@ -48,10 +48,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    color:"white"
   },
   info: {
     display: "flex",
     width: "80%",
+    marginTop:"10%",
     "& img": {
       width: "100px",
       height: "100px",
@@ -64,12 +66,11 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     margin: "0px 20px",
     "& h4": {
-      borderBottom: "1px solid black",
+      borderBottom: "1px solid #fff",
     },
   },
   plans: {
     width: "100%",
-    margin: "10px 0px",
   },
 }));
 
