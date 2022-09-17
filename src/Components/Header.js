@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AppBar, Avatar, makeStyles, Toolbar } from '@material-ui/core'
-import NetflixLogo from '../Images/NetflixLogo.png'
+import Navbar from './Navbar'
 
 const Header = () => {
 
@@ -20,20 +20,21 @@ const Header = () => {
   },[])
 
   return (
-      <AppBar 
-        position='sticky' 
-        elevation={0} 
-        className={`${classes.root} ${show && classes.transparent}`} 
-      >
-        <Toolbar className={classes.toolbar}>
-          <a href='/'>
-            <img src={NetflixLogo} alt='logo' className={classes.img} />
-          </a>
-          <a href={'/profile'}>
-            <Avatar variant='square' style={{cursor:'pointer'}}/>
-          </a>
-        </Toolbar>
-      </AppBar>
+      // <AppBar 
+      //   position='sticky' 
+      //   elevation={0} 
+      //   className={`${classes.root} ${show && classes.transparent}`} 
+      // >
+      //   <Toolbar className={classes.toolbar}>
+      //     <a href='/'>
+      //       <img src={NetflixLogo} alt='logo' className={classes.img} />
+      //     </a>
+      //     <a href={'/profile'}>
+      //       <Avatar variant='square' style={{cursor:'pointer'}}/>
+      //     </a>
+      //   </Toolbar>
+      // </AppBar>
+      <Navbar/>
   )
 }
 

@@ -1,0 +1,95 @@
+.root{
+  width: 100%;
+  height: 100vh;
+  max-width: 850px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.roote{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  
+}
+
+.container span{
+  color: gray;
+  text-align: center;
+}
+
+.subroot{
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.logo{
+  border: 2px solid transparent;
+  width: 200px;
+}
+
+.edit{
+  position: absolute;
+  color: white;
+  font-size: 4rem;
+  background-color: rgba(128, 128, 128, 0.5);
+  width: 100%;
+  height: 100%;
+  margin-top: -100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container:hover span {
+  color: white;
+}
+
+.container:hover .logo{
+  border: 2px solid gray;
+}
+
+.btn{
+  font-size: 1.5rem; 
+  border: none;
+  width:120px ;
+  height: 50px;
+  font-weight: bold;
+  margin-top: 10%;
+}
+
+.add{
+  border: 2px solid transparent;
+  width: 200px;
+  color: gray;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8rem;
+}
+
+.add:hover{
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+@media screen and (max-width:700px){
+  .root{
+    height: fit-content;
+  }
+  .roote{
+    flex-direction: column;
+  }
+}

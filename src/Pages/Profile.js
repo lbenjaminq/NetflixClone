@@ -20,7 +20,7 @@ const Profile = () => {
     <>
       <Header />
       <div className={classes.root}>
-        <Typography variant="h3" style={{marginTop:"20px"}}>Edit profile</Typography>
+        <Typography variant="h3" style={{marginTop:"100px"}}>Edit profile</Typography>
         <div className={classes.info}>
           <img src={NetflixAvatar} alt="logo" />
           <div className={classes.content}>

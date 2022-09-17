@@ -3,13 +3,13 @@ import Profile from "./Pages/Profile";
 import Paypal from "./Pages/Paypal";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import ProfileManage from "./Components/ProfileManager/ProfileManage";
 import { makeStyles } from "@material-ui/core";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
 import { login, logout, selectUser } from "./Redux/UserSlice";
 import { useSelector } from "react-redux";
-import Detail from "./Components/Detail";
 
 function App() {
   const classes = useStyles();
@@ -41,7 +41,10 @@ function App() {
           <Route path={"/login"}>
             <Login />
           </Route>
-          <Route path={"/profile"}>
+          <Route exact path={"/manage"}>
+            <ProfileManage />
+          </Route>
+          <Route exact path={"/profile"}>
             <Profile />
           </Route>
           <Route path={"/checkout"}>
@@ -49,9 +52,6 @@ function App() {
           </Route>
           <Route exact path={"/"}>
             <Home />
-          </Route>
-          <Route path={"/detail:id"}>
-            <Detail />
           </Route>
         </Switch>
       </Router>
@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#141414",
     minHeight: "100vh",
+    fontFamily:"Helvetica"
   },
 }));
 

@@ -84,6 +84,9 @@ const useStyles = makeStyles((theme)=>({
     justifyContent:'space-between',
     width:'100%',
     margin:'40px 0px',
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
   },
   approved:{
     zIndex:"300",

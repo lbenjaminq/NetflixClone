@@ -1,0 +1,31 @@
+.root{
+  background-color:#111;
+  transition: 1s;
+}
+
+.transparent{
+  background-color: transparent;
+  transition: 1s;
+}
+
+.link{
+  text-decoration: none;
+  color: #e5e5e5;
+  font-size: 0.9rem;
+}
+
+.link:hover{
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.links{
+  text-decoration: none;
+  color: #e5e5e5;
+  font-size: 0.8rem;
+}
+
+.links:hover{
+  text-decoration: underline;
+  color: #e5e5e5;
+  font-size: 0.8rem;
+}
