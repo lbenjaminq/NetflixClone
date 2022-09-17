@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { makeStyles, Typography } from '@material-ui/core'
-import axios from "axios"
 import instance from '../axios'
+import { useDispatch } from 'react-redux'
+import { getDetail } from '../Redux/Actions'
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 const Row = ({title,fetchUrl,isLarge}) => {
 
   const classes = useStyles()
   const [movie,setMovies] = useState([])
-
+  const dispatch = useDispatch()
+  const detail = useSelector(state=>state.detail)
+  const history = useHistory()
   const base_url= "https://image.tmdb.org/t/p/original/"
 
   useEffect(()=>{
@@ -19,7 +24,11 @@ const Row = ({title,fetchUrl,isLarge}) => {
     current()
   },[fetchUrl])
 
-  console.log(movie)
+
+  const handleClick = (movie) =>{
+    dispatch(getDetail(movie.id))
+    history.push(`/detail/${movie.id}`)
+  }
 
   return (
     <div className={classes.root}>
@@ -35,9 +44,9 @@ const Row = ({title,fetchUrl,isLarge}) => {
                 key={movie.id}
                 src={`${base_url}${isLarge ? movie.poster_path : movie.backdrop_path}`}
                 alt={movie?.name}
+                onClick={()=>handleClick(movie)}
               />
             )
-
           ))
         }
       </div>

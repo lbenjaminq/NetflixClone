@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
 import { login, logout, selectUser } from "./Redux/UserSlice";
 import { useSelector } from "react-redux";
+import Detail from "./Components/Detail";
 
 function App() {
   const classes = useStyles();
@@ -46,8 +47,11 @@ function App() {
           <Route path={"/checkout"}>
             <Paypal />
           </Route>
-          <Route path={"/"}>
+          <Route exact path={"/"}>
             <Home />
+          </Route>
+          <Route path={"/detail:id"}>
+            <Detail />
           </Route>
         </Switch>
       </Router>
