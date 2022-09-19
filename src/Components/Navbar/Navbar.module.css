@@ -29,3 +29,9 @@
   color: #e5e5e5;
   font-size: 0.8rem;
 }
+
+@media screen and (max-width:800px) {
+  .transparent{
+  background-color:#111;
+  }
+}

@@ -1,26 +1,27 @@
-import React from "react";
-import { makeStyles, Typography } from "@material-ui/core";
-import Header from "../Components/Header";
-import NetflixAvatar from "../Images/Netflix-avatar.png";
+import Navbar from "../Components/Navbar/Navbar";
 import Plans from "../Components/Plans";
-import { NetflixButton } from "../styled";
-import { auth } from "../firebase";
+import NetflixAvatar from "../Images/Netflix-avatar.png";
 import { useHistory } from "react-router-dom";
+import { NetflixButton } from "../styled";
+import { makeStyles, Typography } from "@material-ui/core";
+import { auth } from "../firebase";
 
 const Profile = () => {
   const classes = useStyles();
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSignUp = () => {
     auth.signOut();
-    history.push("/login")
-  }
+    history.push("/login");
+  };
 
   return (
     <>
-      <Header />
+      <Navbar />
       <div className={classes.root}>
-        <Typography variant="h3" style={{marginTop:"100px"}}>Edit profile</Typography>
+        <Typography variant="h3" style={{ marginTop: "100px" }}>
+          Edit profile
+        </Typography>
         <div className={classes.info}>
           <img src={NetflixAvatar} alt="logo" />
           <div className={classes.content}>
@@ -48,12 +49,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    color:"white"
+    color: "white",
   },
   info: {
     display: "flex",
     width: "80%",
-    marginTop:"10%",
+    marginTop: "10%",
     "& img": {
       width: "100px",
       height: "100px",

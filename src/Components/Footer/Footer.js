@@ -1,16 +1,23 @@
-import React from "react";
 import style from "./Footer.module.css";
-import {AiFillLinkedin,AiFillGithub} from 'react-icons/ai'
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
 const Footer = () => {
   return (
     <div className={style.root}>
       <div>
-        <a className={style.networks} href="https://github.com/lbenjaminq" target={"blank"}>
-          <AiFillGithub/>
+        <a
+          className={style.networks}
+          href="https://github.com/lbenjaminq"
+          target={"blank"}
+        >
+          <AiFillGithub />
         </a>
-        <a className={style.networks} href="https://www.linkedin.com/in/leandro-quiroga/" target={"blank"}>
-          <AiFillLinkedin/>
+        <a
+          className={style.networks}
+          href="https://www.linkedin.com/in/leandro-quiroga/"
+          target={"blank"}
+        >
+          <AiFillLinkedin />
         </a>
       </div>
       <ul className={style.content}>
@@ -30,9 +37,9 @@ const Footer = () => {
       <span className={style.service}>Service Code</span>
       <span>
         @2001-2022 Leandro Benjamin Quiroga - Portfolio:
-        <a 
+        <a
           href="https://portfolio-lbenjaminq.vercel.app/"
-          style={{textDecoration:"none",color:"#c3c3c3"}}
+          style={{ textDecoration: "none", color: "#c3c3c3" }}
           target="blank"
         >
           {" "}

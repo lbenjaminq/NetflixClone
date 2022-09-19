@@ -3,6 +3,8 @@ import { InputBase } from "@material-ui/core";
 
 const handleWidth = (wide) => {
   switch (wide) {
+    case "small":
+      return "fit-content"
     case "large":
       return "100%";
     case "medium":

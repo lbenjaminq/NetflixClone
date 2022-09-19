@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Button, makeStyles, Typography } from "@material-ui/core";
-// import banner from '../Images/banner.jpg'
 import instance from "../axios";
 import { requests } from "../requests";
+import { useState, useEffect } from "react";
 import { BsPlayFill } from "react-icons/bs";
 import { RiInformationFill } from "react-icons/ri";
+import { Button, makeStyles, Typography } from "@material-ui/core";
 
 const Banner = () => {
+  
   const classes = useStyles();
   const [movie, setMovie] = useState([]);
-  const truncate = (description, n) => {
-    return description?.length > n
-      ? `${description.substr(0, n - 1)}...`
-      : description;
-  };
 
   useEffect(() => {
     const current = async () => {
@@ -27,6 +22,13 @@ const Banner = () => {
     current();
   }, []);
 
+  const truncate = (description, n) => {
+    return description?.length > n
+      ? `${description.substr(0, n - 1)}...`
+      : description;
+  };
+
+
   return (
     <div
       className={classes.root}
@@ -38,36 +40,32 @@ const Banner = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {
-        movie.name || movie.title || movie.original_name || movie.description  
-        ?
+      {movie.name || movie.title || movie.original_name || movie.description ? (
         <div className={classes.content}>
-        <Typography variant="h1" component="h1" style={{width:"70%"}}>
-          {movie?.name || movie?.name || movie?.original_name}
-        </Typography>
-        <Typography variant="h6" className={classes.description}>
-          {truncate(`${movie?.overview}`, 150)}
-        </Typography>
-        <div className={classes.containerButton}>
-          <Button className={classes.buttons}>
-            <BsPlayFill style={{ fontSize: "2rem" }} />
-            Play
-          </Button>
-          <Button className={classes.buttonsMore}>
-            <RiInformationFill
-              style={{ fontSize: "2rem",marginRight:"1%" }}
-            />
-            More info
-          </Button>
+          <Typography variant="h1" component="h1" style={{ width: "70%" }}>
+            {movie?.name || movie?.name || movie?.original_name}
+          </Typography>
+          <Typography variant="h6" className={classes.description}>
+            {truncate(`${movie?.overview}`, 150)}
+          </Typography>
+          <div className={classes.containerButton}>
+            <Button className={classes.buttons}>
+              <BsPlayFill style={{ fontSize: "2rem" }} />
+              Play
+            </Button>
+            <Button className={classes.buttonsMore}>
+              <RiInformationFill
+                style={{ fontSize: "2rem", marginRight: "1%" }}
+              />
+              More info
+            </Button>
+          </div>
+          <div className={classes.offset}></div>
         </div>
-        <div className={classes.offset}></div>
-      </div>:
-      (
+      ) : (
         "Loading.."
-      )
-      }
-      
-      </div>
+      )}
+    </div>
   );
 };
 
@@ -132,9 +130,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage:
       "linear-gradient(180deg,transparent, rgba(30,37,37,0.61) ,#141414)",
   },
-  loading:{
-
-  }
+  loading: {},
 }));
 
 export default Banner;

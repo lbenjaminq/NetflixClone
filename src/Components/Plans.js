@@ -1,15 +1,11 @@
-import React from 'react'
-import { makeStyles, Typography } from '@material-ui/core'
-import { NetflixButton } from '../styled'
+import { useState } from "react";
+import { NetflixButton } from "../styled";
+import { makeStyles, Typography } from "@material-ui/core";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import {useState} from 'react'
 
-
-const Plans = ({cost,children}) => {
-
-  const classes = useStyles()
-  const [approved,setApproved] = useState(false)
-
+const Plans = ({ cost, children }) => {
+  const classes = useStyles();
+  const [approved, setApproved] = useState(false);
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
   const [ErrorMessage, setErrorMessage] = useState("");
@@ -27,7 +23,6 @@ const Plans = ({cost,children}) => {
             },
           },
         ],
-        // not needed if a shipping address is actually needed
         application_context: {
           shipping_preference: "NO_SHIPPING",
         },
@@ -38,12 +33,11 @@ const Plans = ({cost,children}) => {
       });
   };
 
-  // check Approval
   const onApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
       const { payer } = details;
       setSuccess(true);
-      setApproved(true)
+      setApproved(true);
     });
   };
 
@@ -53,49 +47,47 @@ const Plans = ({cost,children}) => {
 
   return (
     <div className={classes.root}>
-       <PayPalScriptProvider
+      <PayPalScriptProvider
         options={{
           "client-id":
             "AQnY7t35rSyTNW3A0LK70uIe26h_NLkV-ZQ0WiUHy95rOLeUB_PhV6fgWPPWIe96cf65ODrzEcuYUxQd",
         }}
       >
-        <Typography  variant='h5'>{children}</Typography>
-        <NetflixButton radius onClick={()=>setShow(!show)} >Subscribe</NetflixButton>
+        <Typography variant="h5">{children}</Typography>
+        <NetflixButton radius="radius" onClick={() => setShow(!show)}>
+          Subscribe
+        </NetflixButton>
         {show ? (
-         <PayPalButtons
-           style={{ layout: "vertical" }}
-           createOrder={createOrder}
-           onApprove={onApprove}
-         />
-       ) : null}
+          <PayPalButtons
+            style={{ layout: "vertical" }}
+            createOrder={createOrder}
+            onApprove={onApprove}
+          />
+        ) : null}
       </PayPalScriptProvider>
-      {approved ?
-        <div className={classes.approved}>APPROVED</div>
-        :
-        null
-      }
+      {approved ? <div className={classes.approved}>APPROVED</div> : null}
     </div>
-  )
-}
+  );
+};
 
-const useStyles = makeStyles((theme)=>({
-  root:{
-    display:'flex',
-    justifyContent:'space-between',
-    width:'100%',
-    margin:'40px 0px',
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+    margin: "40px 0px",
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
     },
   },
-  approved:{
-    zIndex:"300",
-    width:"28%",
-    position:"absolute",
-    fontSize:"4rem",
-    left:"0",
-    bottom:"0"
-  }
-}))
+  approved: {
+    zIndex: "300",
+    width: "28%",
+    position: "absolute",
+    fontSize: "4rem",
+    left: "0",
+    bottom: "0",
+  },
+}));
 
-export default Plans
+export default Plans;

@@ -1,20 +1,36 @@
-import Container from "react-bootstrap/Container";
+import firebase from "firebase";
+import classes from "./Navbar.module.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import NetflixLogo from "../Images/NetflixLogo.png";
+import NetflixAvatar from "../../Images/Netflix-avatar.png";
+import NetflixLogo from "../../Images/NetflixLogo.png";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { BsFillPersonFill } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import { MdNotifications, MdEdit, MdOutlineHelp } from "react-icons/md";
-import { BsFillPersonFill } from "react-icons/bs";
-import { useState, useEffect } from "react";
-import classes from "./Navbar.module.css";
-import NetflixAvatar from "../Images/Netflix-avatar.png";
-import { auth } from "../firebase";
-import { useHistory } from "react-router-dom";
+import { auth } from "../../firebase";
 
 function CollapsibleExample() {
   const [show, setShow] = useState(true);
-  const history = useHistory()
+  const [userActive, setUserActive] = useState("");
+  const history = useHistory();
+  const user = firebase.auth().currentUser;
+
+  useEffect(() => {
+    if (user !== null) {
+      user.providerData.forEach((profile) => {
+        setUserActive(profile.email);
+      });
+    }
+  }, [user]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", hideHeader);
+    return () => window.removeEventListener("scroll", hideHeader);
+  }, []);
+
   const hideHeader = () => {
     if (window.scrollY > 200) {
       setShow(false);
@@ -24,13 +40,9 @@ function CollapsibleExample() {
   };
 
   const handleSignUp = () => {
-    auth.signOut()
-    history.push("/login")
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", hideHeader);
-  }, []);
+    auth.signOut();
+    history.push("/login");
+  };
 
   return (
     <Navbar
@@ -39,8 +51,8 @@ function CollapsibleExample() {
       className={`${classes.root} ${show && classes.transparent}`}
       fixed="top"
     >
-      <a href="/" style={{marginLeft: "2.80%" }}>
-        <img src={NetflixLogo} style={{ width: "115px"}}  />
+      <a href="/home" style={{ marginLeft: "2.80%" }}>
+        <img src={NetflixLogo} style={{ width: "115px" }} alt="Logo" />
       </a>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -102,6 +114,7 @@ function CollapsibleExample() {
             <NavDropdown.Item href="/profile">
               <div>
                 <img
+                alt="Avatar"
                   src={NetflixAvatar}
                   style={{
                     borderRadius: "5px",
@@ -110,7 +123,7 @@ function CollapsibleExample() {
                     marginRight: "5%",
                   }}
                 />
-                Leandro
+                <span>{userActive}</span>
               </div>
             </NavDropdown.Item>
             <NavDropdown.Item href="/manage">
@@ -118,9 +131,7 @@ function CollapsibleExample() {
                 <MdEdit
                   style={{ width: "20px", height: "20px", marginRight: "4%" }}
                 />
-                <a href="/manage" className={classes.links}>
-                  Manage profiles
-                </a>
+                <span className={classes.links}>Manage profiles</span>
               </div>
             </NavDropdown.Item>
             <NavDropdown.Item href="/profile">
@@ -128,26 +139,22 @@ function CollapsibleExample() {
                 <BsFillPersonFill
                   style={{ width: "20px", height: "20px", marginRight: "4%" }}
                 />
-                <a href="/profile" className={classes.links}>
-                  Account
-                </a>
+                <span className={classes.links}>Account</span>
               </div>
             </NavDropdown.Item>
-            <NavDropdown.Item href="/memberships">
+            <NavDropdown.Item href="https://help.netflix.com/es" target="blank">
               <div>
                 <MdOutlineHelp
                   style={{ width: "20px", height: "20px", marginRight: "4%" }}
                 />
-                <a href="/profile" className={classes.links}>
-                  Help Center
-                </a>
+                <span className={classes.links}>Help Center</span>
               </div>
             </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item>
-              <a  onClick={handleSignUp} className={classes.links}>
+              <span onClick={handleSignUp} className={classes.links}>
                 Sign out of Netflix
-              </a>
+              </span>
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
