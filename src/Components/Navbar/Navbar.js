@@ -1,4 +1,3 @@
-import firebase from "firebase";
 import classes from "./Navbar.module.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -12,19 +11,9 @@ import { FaSearch } from "react-icons/fa";
 import { MdNotifications, MdEdit, MdOutlineHelp } from "react-icons/md";
 import { auth } from "../../firebase";
 
-function CollapsibleExample() {
+function CollapsibleExample({ active }) {
   const [show, setShow] = useState(true);
-  const [userActive, setUserActive] = useState("");
   const history = useHistory();
-  const user = firebase.auth().currentUser;
-
-  useEffect(() => {
-    if (user !== null) {
-      user.providerData.forEach((profile) => {
-        setUserActive(profile.email);
-      });
-    }
-  }, [user]);
 
   useEffect(() => {
     window.addEventListener("scroll", hideHeader);
@@ -42,7 +31,10 @@ function CollapsibleExample() {
   const handleSignUp = () => {
     auth.signOut();
     history.push("/login");
+    window.localStorage.removeItem("user")
   };
+
+  console.log("ACTIVEEEEEEE",active)
 
   return (
     <Navbar
@@ -123,7 +115,7 @@ function CollapsibleExample() {
                     marginRight: "5%",
                   }}
                 />
-                <span>{userActive}</span>
+                <span>{active.user?.email ? active.user?.email : "user" }</span>
               </div>
             </NavDropdown.Item>
             <NavDropdown.Item href="/manage">

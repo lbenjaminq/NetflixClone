@@ -13,6 +13,7 @@ const Profile = () => {
   const handleSignUp = () => {
     auth.signOut();
     history.push("/login");
+    window.localStorage.removeItem("user")
   };
 
   return (

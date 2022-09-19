@@ -32,7 +32,7 @@ const Login = () => {
         </Typography>
         <div>
           <NetflixInput placeholder="Email address" />
-          <NetflixButton>GET STARTED</NetflixButton>
+          <NetflixButton onClick={handleClick} >GET STARTED</NetflixButton>
         </div>
       </div>
     </div>
