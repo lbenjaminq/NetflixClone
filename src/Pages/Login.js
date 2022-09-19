@@ -30,7 +30,7 @@ const Login = () => {
         <Typography variant="h6">
           Ready to watch? Enter your email to create or restart your membership.
         </Typography>
-        <div>
+        <div className={classes.get}>
           <NetflixInput placeholder="Email address" />
           <NetflixButton onClick={handleClick} >GET STARTED</NetflixButton>
         </div>
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     objectFit: "contain",
     position: "relative",
+
   },
   logo: {
     position: "fixed",
@@ -56,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
     cursor: "pointer",
     zIndex: "100",
+    [theme.breakpoints.down("xs")]: {
+      width: "140px",
+    },
   },
   session: {
     position: "fixed",
@@ -73,7 +77,33 @@ const useStyles = makeStyles((theme) => ({
       zIndex: "100",
       textAlign: "center",
     },
+    "& h2":{
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "3rem",
+      },
+    },
+    "& h5":{
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1rem",
+      },
+    },
+    "& h6":{
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "0.8rem",
+      },
+    }
   },
+  get:{
+    [theme.breakpoints.down("xs")]: {
+      margin: "10%",
+      display:"flex",
+      flexDirection:"column",
+      alignItems:"center"
+    },
+    "& button":{
+      marginTop:"10%"
+    }
+  }
 }));
 
 export default Login;

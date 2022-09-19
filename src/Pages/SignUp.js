@@ -10,7 +10,6 @@ const SignUp = () => {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const history = useHistory();
 
   const handleEmail = (e) => {
@@ -25,22 +24,16 @@ const SignUp = () => {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        window.localStorage.setItem("user", JSON.stringify(authUser))
-        history.push("/home")
-      })
+      .then(() => history.push("/home"))
       .catch((error) => alert(error.message));
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
     auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((authUser) => {
-        window.localStorage.setItem("user", JSON.stringify(authUser))
-        history.push("/home")
-      })
-    .catch((error) => alert(error.message));
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => history.push("/home"))
+      .catch((error) => alert(error.message));
   };
 
   return (

@@ -13,7 +13,7 @@ const Profile = () => {
   const handleSignUp = () => {
     auth.signOut();
     history.push("/login");
-    window.localStorage.removeItem("user")
+    
   };
 
   return (
@@ -44,7 +44,7 @@ const Profile = () => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "93vh",
+    minHeight: "100vh",
     maxWidth: "800px",
     margin: "auto",
     display: "flex",

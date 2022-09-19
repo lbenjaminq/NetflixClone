@@ -4,10 +4,10 @@ import Banner from "../Components/Banner";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
 
-const Home = ({ active }) => {
+const Home = () => {
   return (
     <div>
-      <Navbar active={active} />
+      <Navbar />
       <Banner />
       <Row
         title="NETFLIX ORIGINALS"

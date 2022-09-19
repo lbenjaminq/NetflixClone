@@ -74,12 +74,23 @@ const useStyles = makeStyles((theme) => ({
     height: "80vh",
     position: "relative",
     color: "#fff",
+    [theme.breakpoints.down("xs")]: {
+      height:"fit-content",
+      width:"100%",
+      marginTop:"15%",
+      marginBottom:"10%"
+    },
   },
   description: {
     wordWrap: "break-word",
     maxWidth: "500px",
     marginTop: theme.spacing(2),
     flexWrap: "wrap",
+    [theme.breakpoints.down("xs")]: {
+      width:"80%",
+      height:"fit-content",
+      fontSize:"1rem"
+    },
   },
   content: {
     height: "80%",
@@ -87,6 +98,13 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    [theme.breakpoints.down("xs")]: {
+      "& h1":{
+        marginTop:"10%",
+        minHeight:"fit-content",
+        fontSize:"2rem"
+      }
+    },
   },
   containerButton: {
     marginTop: "50px",
@@ -104,6 +122,10 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#c3c3c3",
     },
+    [theme.breakpoints.down("xs")]: {
+      fontSize:"1rem",
+      width:"30%"
+    },
   },
   buttonsMore: {
     backgroundColor: "rgba(109, 109, 110, 1)",
@@ -118,6 +140,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.1rem",
     "&:hover": {
       backgroundColor: "rgba(109, 109, 110, 0.7)",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize:"1rem",
+      fontSize:"0.8rem"
     },
   },
   offset: {

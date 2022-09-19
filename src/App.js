@@ -5,7 +5,7 @@ import Profile from "./Pages/Profile";
 import ProfileManage from "./Components/ProfileManager/ProfileManage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { login, logout } from "./Redux/UserSlice";
 import { auth } from "./firebase";
@@ -13,15 +13,7 @@ import { auth } from "./firebase";
 function App() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [active, setActive] = useState(() => {
-    const userActive = JSON.parse(window.localStorage.getItem("user"));
-    if (userActive) {
-      return userActive;
-    } else {
-      return "";
-    }
-  });
-
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
@@ -52,7 +44,7 @@ function App() {
             <Profile />
           </Route>
           <Route exact path={"/home"}>
-            <Home active={active} />
+            <Home />
           </Route>
           <Route exact path={"/"}>
             <Login />
