@@ -1,17 +1,43 @@
 .root{
   background-color:#111;
   transition: 1s;
+  color: #fff;
 }
 
 .transparent{
   background-color: transparent;
   transition: 1s;
+  color: #fff;
+}
+
+.responsive{
+  display: flex;
+  /* border: 2px solid red; */
+  margin-right: 10%;
+  align-items: center;
+}
+
+.home{
+  color: #e5e5e5;
+  margin-left: 20px;
 }
 
 .link{
   text-decoration: none;
   color: #e5e5e5;
   font-size: 0.9rem;
+}
+
+.mobile{
+  display: none;
+}
+
+.container_mobile{
+  display: none;
+}
+
+.signOut{
+  display: none;
 }
 
 .link:hover{
@@ -33,5 +59,49 @@
 @media screen and (max-width:800px) {
   .transparent{
   background-color:#111;
+  }
+  .hidden{
+    display: none;
+  }
+  .responsive{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width:767px) {
+  .mobile{
+    display: inline;
+    text-decoration: none;
+    color: #e5e5e5;
+    margin: 10px 10px;
+    font-size: 1rem;
+  }
+  .container_mobile{
+    margin-left: 20px;
+    margin-top: 10px;
+    display: block;
+  }
+  .link{
+    margin-left: 20px;
+  }
+  .signOut{
+    margin: 10px 20px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    display: block;
+  }
+}
+
+@media screen and (max-width:282px) {
+  .transparent{
+  background-color:#111;
+  }
+  .hidden{
+    display: none;
+  }
+  .responsive{
+    display: flex;
+    justify-content: space-between;
   }
 }
