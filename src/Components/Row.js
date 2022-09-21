@@ -5,8 +5,8 @@ import { makeStyles, Typography } from "@material-ui/core";
 const Row = ({ title, fetchUrl, isLarge }) => {
   const classes = useStyles();
   const [movie, setMovies] = useState([]);
-  const base_url_backdrop = "https://image.tmdb.org/t/p/w780";
-  const base_url_poster = "https://image.tmdb.org/t/p/w185";
+  const base_url_backdrop = "https://image.tmdb.org/t/p/w300";
+  const base_url_poster = "https://image.tmdb.org/t/p/w154";
 
   useEffect(() => {
     const current = async () => {
