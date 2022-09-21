@@ -5,7 +5,8 @@ import { makeStyles, Typography } from "@material-ui/core";
 const Row = ({ title, fetchUrl, isLarge }) => {
   const classes = useStyles();
   const [movie, setMovies] = useState([]);
-  const base_url = "https://image.tmdb.org/t/p/original/";
+  const base_url_backdrop = "https://image.tmdb.org/t/p/w780";
+  const base_url_poster = "https://image.tmdb.org/t/p/w185";
 
   useEffect(() => {
     const current = async () => {
@@ -22,15 +23,13 @@ const Row = ({ title, fetchUrl, isLarge }) => {
       <div className={classes.subroot}>
         {movie?.map(
           (movie) =>
-            ((isLarge && movie.poster_path) ||
+            ((isLarge &&  movie.poster_path) ||
               (!isLarge && movie.backdrop_path)) && (
               <img
                 className={`${classes.poster} ${
                   isLarge && classes.posterLarge
                 }`}
-                src={`${base_url}${
-                  isLarge ? movie.poster_path : movie.backdrop_path
-                }`}
+                src={isLarge ? `${base_url_poster}${movie.poster_path}` : `${base_url_backdrop}${movie.backdrop_path}`}
                 alt={movie?.name}
                 key={movie.id}
               />
