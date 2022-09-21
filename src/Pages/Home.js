@@ -3,12 +3,14 @@ import Row from "../Components/Row";
 import Banner from "../Components/Banner";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
+import Alert from '../Components/Alert'
 
 const Home = () => {
   return (
     <div>
       <Navbar />
       <Banner />
+      <Alert/>
       <Row
         title="NETFLIX ORIGINALS"
         fetchUrl={requests.fetchNetflixOriginals}
