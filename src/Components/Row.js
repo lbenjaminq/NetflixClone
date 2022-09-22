@@ -26,6 +26,7 @@ const Row = ({ title, fetchUrl, isLarge }) => {
             ((isLarge &&  movie.poster_path) ||
               (!isLarge && movie.backdrop_path)) && (
               <img
+                loading="lazy"
                 className={`${classes.poster} ${
                   isLarge && classes.posterLarge
                 }`}

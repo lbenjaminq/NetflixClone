@@ -26,8 +26,7 @@ export default function TransitionAlerts() {
           }
           sx={{ mb: 2 }}
         >
-          There may be problems loading the images due to a delay in calling the
-          api. We are working on it. <a href="/home" style={{color:"#a5a5a5"}} >RELOAD THE PAGE.</a> 
+         There are likely to be problems with the size of the images. We are working on it. <a href="/home" style={{color:"#a5a5a5"}} >RELOAD THE PAGE.</a> 
         </Alert>
       </Collapse>
     </Box>
